@@ -25,10 +25,15 @@ class UploadView(TemplateView):
         return render(request, 'movies/upload.html', context)
 
     def post(self, request, *args, **kwargs):
-        form = MovieForm(request.POST, request.FILES)
-        post = form.save(commit=False)
-        post.save()
-        return redirect(to='movies:home')
+        if request.method == 'POST':
+            form = MovieForm(request.POST, request.FILES)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.save()
+                return redirect(to='movies:home')
+        else:
+            form = MovieForm()
+        return render(request, 'movies/upload.html', {'form': form})
 
 
 upload = UploadView.as_view()
