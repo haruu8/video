@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang='ja'>
     <head>
@@ -7,10 +9,10 @@
     </head>
     <body>
         <ul>
-            <li><a href='#'>HOME</a></li>
-            <li><a href='#'>UpLoad</a></li>
+            <li><a href='{% url "movies:home" %}'>HOME</a></li>
+            <li><a href='{% url "movies:upload" %}'>Upload</a></li>
         </ul>
-        {% block content %}
+        {% block content %}{% endblock %}
 
 
 
