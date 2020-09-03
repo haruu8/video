@@ -28,7 +28,7 @@ class UploadView(TemplateView):
         if request.method == 'POST':
             form = MovieForm(request.POST, request.FILES)
             if form.is_valid():
-                post = form.save(commit=False)
+                post = form.save()
                 post.save()
                 return redirect(to='movies:home')
         else:
