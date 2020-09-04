@@ -6,6 +6,14 @@
 {% block content %}
 
 
+{% for movie_content in movie_contents %}
+<div>
+    <a href='{% url "movies:detail" movie_content.pk %}'>{{ movie_content.title }}</a>
+    <video src='{{ movie_content.movie }}'></video>
+    <p>{{ movie_content.created_at }}</p>
+    <hr>
+</div>
+{% endfor %}
 
 
 

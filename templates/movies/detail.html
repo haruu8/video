@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}動画 | {{ movie_content.title }}{% endblock %}
+
+
+
+{% block content %}
+
+
+    <h1>{{ movie_content.title }}</h1>
+    <video src='movie_content.movie'></video>
+    <p>{{ movie_content.created_at }}</p>
+    <p>{{ movie_content.discription }}</p>
+
+
+{% endblock %}
