@@ -54,3 +54,13 @@ class DetailView(DetailView):
         return context
 
 detail = DetailView.as_view()
+
+class FindView(TemplateView):
+    template_name = 'movies/find.html'
+    model = MovieContent
+
+    def get(self, request, *args, **kwargs):
+        context = {
+            
+        }
+        return render(request, 'movies/find.html', context)
