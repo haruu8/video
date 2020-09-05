@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.views import generic
 from .forms import MovieForm
 from .models import MovieContent
@@ -44,7 +44,7 @@ class UploadView(TemplateView):
 upload = UploadView.as_view()
 
 
-class DetailView(TemplateView):
+class DetailView(DetailView):
 
     template_name = 'movies/detail.html'
     model = MovieContent

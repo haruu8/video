@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import HomeView, UploadView, DetailView
 
+
 app_name = 'movies'
 
 

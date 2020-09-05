@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}動画 | {{ movie_content.title }}{% endblock %}
 
@@ -7,10 +8,10 @@
 {% block content %}
 
 
-    <h1>{{ movie_content.title }}</h1>
-    <video src='movie_content.movie'></video>
-    <p>{{ movie_content.created_at }}</p>
-    <p>{{ movie_content.discription }}</p>
+    <h1>{{ object.title }}</h1>
+    <video src='/{{ object.movie.url }}' controls></video>
+    <p>{{ object.created_at }} に投稿</p>
+    <p>{{ object.discription }}</p>
 
 
 {% endblock %}
