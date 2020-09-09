@@ -13,3 +13,19 @@ class MovieContent(models.Model):
         # validators=[FileExtensionValidator(['pdf', ])],
     )
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Comment(models.Model):
+    class Meta(object):
+        db_table = 'comment'
+
+    text = models.CharField(verbose_name='コメント', max_length=255, null=False)
+    approved_comment = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text

@@ -1,8 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
+from django.urls import reverse_lazy
+from django.http import HttpResponse
 from django.views.generic import TemplateView, DetailView
 from django.views import generic
-from .forms import MovieForm
-from .models import MovieContent
+from .forms import MovieForm, CommentForm
+from .models import MovieContent, Comment
 
 
 
@@ -54,3 +56,19 @@ class DetailView(DetailView):
         return context
 
 detail = DetailView.as_view()
+
+
+
+def add_comment(request, pk):
+    movie = get_object_or_404(MovieContent, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.movie = movie
+            comment.save()
+            return redirect('movies:detail', pk=movie.pk)
+    else:
+        form = CommentForm()
+    print(form)
+    return render(request, 'movies/add_comment.html', {'form': form})

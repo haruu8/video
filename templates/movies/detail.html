@@ -14,4 +14,20 @@
     <p>{{ object.discription }}</p>
 
 
+
+    <hr>
+    <p>{{object}}</p>
+    <a class="btn btn-default" href="/{{ object.id }}/comment">Add comment</a>
+
+    {% for comment in movie_content.comments.all %}
+    <hr>
+        <div class="comment">
+            <div>{{ comment.created_at }}</div>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+    {% empty %}
+        <p>No comments here yet :(</p>
+    {% endfor %}
+
+
 {% endblock %}
