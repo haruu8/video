@@ -16,10 +16,9 @@
 
 
     <hr>
-    <p>{{object}}</p>
     <a class="btn btn-default" href="/{{ object.id }}/comment">Add comment</a>
 
-    {% for comment in movie_content.comments.all %}
+    {% for comment in MovieContent.comments.all %}
     <hr>
         <div class="comment">
             <div>{{ comment.created_at }}</div>
